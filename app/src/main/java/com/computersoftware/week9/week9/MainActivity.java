@@ -3,9 +3,12 @@ package com.computersoftware.week9.week9;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +39,49 @@ public class MainActivity extends AppCompatActivity {
 
         spn_pet.setAdapter(mAdapter_pet);
         spn_major.setAdapter(mAdapter_major);
+
+        spn_pet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+//                Toast.makeText(context,
+//                        "Result1 : "+arrPet[position],
+//                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context,
+//                        "Result1 : "+spn_pet.getSelectedItemId(),
+//                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        spn_major.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+//                Toast.makeText(context,
+////                        "Result2 : "+arrMajor[position]
+////                        , Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,
+                        "Pet : "+spn_pet.getSelectedItem() +
+                                " Major :"+spn_major.getSelectedItem() ,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 }
